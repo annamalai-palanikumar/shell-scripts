@@ -44,7 +44,7 @@ do
       wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
       ;;
     *)
-      echo -n "unknown"
+      sudo apt-get install $pkg
       ;;
   esac
 done
