@@ -1,10 +1,14 @@
 #!/bin/bash
 
 # Sample system initial setup commands
-# Production ./install.sh jre,mysql,nginx
-# Test ./install.sh jre,mysql,nginx
-# Build Master ./install.sh jre,jenkins,nginx,git
-# Build Slave .install.sh jdk,git,maven
+# Production:
+# source <(curl -s https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/install.sh) jre,mysql,nginx
+# Test: 
+# source <(curl -s https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/install.sh) jre,mysql,nginx
+# Build Master:
+# source <(curl -s https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/install.sh) jre,jenkins,nginx,git
+# Build Slave:
+# source <(curl -s https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/install.sh) jdk,git,maven
 
 pkgs=($(echo $1 | tr "," "\n"))
 for pkg in "${pkgs[@]}"
