@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Production ./install.sh jre;mysql;nginx
-# Test ./install.sh jre;mysql;nginx
-# Build Master ./install.sh jre;jenkins;nginx;git
-# Build Slave .install.sh jdk;git;maven
+# Production ./install.sh jre,mysql,nginx
+# Test ./install.sh jre,mysql,nginx
+# Build Master ./install.sh jre,jenkins,nginx,git
+# Build Slave .install.sh jdk,git,maven
 
-pkgs=($(echo $1 | tr ";" "\n"))
+pkgs=($(echo $1 | tr "," "\n"))
 for pkg in "${pkgs[@]}"
 do
   echo -n "Installing $pkg ..."
