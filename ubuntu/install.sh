@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Sample system initial setup commands
 # Production ./install.sh jre,mysql,nginx
 # Test ./install.sh jre,mysql,nginx
 # Build Master ./install.sh jre,jenkins,nginx,git
