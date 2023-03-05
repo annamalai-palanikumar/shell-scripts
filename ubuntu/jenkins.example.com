@@ -11,7 +11,7 @@ map $http_upgrade $connection_upgrade {
 server {
   listen          80;
 
-  server_name     jenkins.find-a-way.in www.jenkins.find-a-way.in;
+  server_name     jenkins.example.com www.jenkins.example.com;
 
   root            /var/run/jenkins/war/;
 
