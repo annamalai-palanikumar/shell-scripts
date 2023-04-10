@@ -85,7 +85,7 @@ do
       sudo mkdir /opt/zkui/
       sudo mv /opt/zkui.jar /opt/zkui/zkui.jar
       sudo mv /opt/config.cfg /opt/zkui/config.cfg
-      if [ $MVN_ALREADY_INSTALLED -eq 0 ]; then sudo apt -y remove --purge maven && sudo apt -y autoremove;fi
+      if [ $MVN_ALREADY_INSTALLED -eq 0 ]; then sudo apt -y remove --purge maven && sudo apt -y autoremove && sudo rm -d -r ~/.m2 /root/.m2;fi
       sudo chown zkui:zkui -R  /opt/zkui
       sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zkui.service 
       sudo mv zkui.service /etc/systemd/system/zkui.service 
