@@ -43,6 +43,26 @@ do
     vscode)
       wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
       ;;
+    zk)
+      sudo useradd zk -m
+      sudo usermod --shell /bin/bash zk
+      usermod -aG sudo zk
+      sudo echo 'DenyUsers zk' >> /etc/ssh/sshd_config
+      sudo systemctl restart sshd
+      sudo mkdir -p /data/zookeeper
+      sudo chown zk:zk /data/zookeeper
+      cd /opt
+      sudo wget https://www.apache.org/dyn/closer.lua/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
+      sudo tar -xvf apache-zookeeper-3.8.0-bin.tar.gz
+      sudo chown zk:zk -R  apache-zookeeper-3.8.0-bin
+      sudo ln -s apache-zookeeper-3.8.0-bin zookeeper
+      sudo chown -h zk:zk zookeeper
+      sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zk.service 
+      sudo mv zk.service /etc/systemd/system/zk.service 
+      sudo systemctl start zk
+      sudo systemctl enable zk
+      sudo systemctl status zk
+      ;;
     *)
       sudo apt-get -y install $pkg
       ;;
