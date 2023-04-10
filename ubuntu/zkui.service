@@ -5,7 +5,7 @@ After=network.target
 
 [Service]    
 Type=forking
-WorkingDirectory=/opt/zookeeper
+WorkingDirectory=/opt/zkui
 User=zkui
 Group=zkui
 ExecStart=java -jar zkui.jar
