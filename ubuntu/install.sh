@@ -69,6 +69,31 @@ do
       sudo systemctl enable zk
       sudo systemctl status zk
       ;;
+    zkui)
+      sudo useradd zkui -m
+      id -u zkui &>/dev/null || sudo useradd -m zkui
+      sudo usermod -s /bin/false zkui
+      MVN_ALREADY_INSTALLED=1;
+      if ! dpkg -s maven; then MVN_ALREADY_INSTALLED=0 & sudo apt -y install maven;fi
+      sudo wget -O /opt/master.zip https://github.com/DeemOpen/zkui/archive/refs/heads/master.zip
+      sudo unzip -o /opt/master.zip -d /opt/zkui
+      sudo rm /opt/master.zip
+      sudo mvn clean install -f /opt/zkui/zkui-master/pom.xml
+      sudo mv /opt/zkui/zkui-master/target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar /opt/zkui.jar
+      sudo mv /opt/zkui/zkui-master/config.cfg /opt/config.cfg
+      sudo rm -d -r /opt/zkui/
+      sudo mkdir /opt/zkui/
+      sudo mv /opt/zkui.jar /opt/zkui/zkui.jar
+      sudo mv /opt/config.cfg /opt/zkui/config.cfg
+      if [ $MVN_ALREADY_INSTALLED -eq 0 ]; then sudo apt -y remove --purge maven && sudo apt -y autoremove;fi
+      sudo chown zkui:zkui -R  /opt/zkui
+      sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zkui.service 
+      sudo mv zkui.service /etc/systemd/system/zkui.service 
+      sudo systemctl daemon-reload
+      sudo systemctl start zkui
+      sudo systemctl enable zkui
+      sudo systemctl status zkui
+      ;;
     *)
       sudo apt-get -y install $pkg
       ;;
