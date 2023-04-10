@@ -9,8 +9,6 @@ WorkingDirectory=/opt/zkui
 User=zkui
 Group=zkui
 ExecStart=java -jar zkui.jar
-ExecStop=pkill -f 'zkui.jar'
-ExecReload=pkill -f 'zkui.jar' && java -jar zkui.jar
 TimeoutSec=30
 Restart=on-failure
 
