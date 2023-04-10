@@ -51,9 +51,6 @@ do
     zk)
       sudo useradd zk -m
       sudo usermod --shell /bin/bash zk
-      usermod -aG sudo zk
-      sudo echo 'DenyUsers zk' >> /etc/ssh/sshd_config
-      sudo systemctl restart sshd
       sudo mkdir -p /data/zookeeper
       sudo chown zk:zk /data/zookeeper
       cd /opt
@@ -64,6 +61,8 @@ do
       sudo chown -h zk:zk zookeeper
       sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zk.service 
       sudo mv zk.service /etc/systemd/system/zk.service 
+      sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zoo.cfg 
+      sudo mv zoo.cfg /opt/zookeeper/conf/zoo.cfg 
       sudo systemctl daemon-reload
       sudo systemctl start zk
       sudo systemctl enable zk
