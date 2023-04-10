@@ -57,7 +57,7 @@ do
       sudo mkdir -p /data/zookeeper
       sudo chown zk:zk /data/zookeeper
       cd /opt
-      sudo wget https://www.apache.org/dyn/closer.lua/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
+      sudo wget https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
       sudo tar -xvf apache-zookeeper-3.8.0-bin.tar.gz
       sudo chown zk:zk -R  apache-zookeeper-3.8.0-bin
       sudo ln -s apache-zookeeper-3.8.0-bin zookeeper
