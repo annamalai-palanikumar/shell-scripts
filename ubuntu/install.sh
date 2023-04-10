@@ -64,6 +64,7 @@ do
       sudo chown -h zk:zk zookeeper
       sudo wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/zk.service 
       sudo mv zk.service /etc/systemd/system/zk.service 
+      sudo systemctl daemon-reload
       sudo systemctl start zk
       sudo systemctl enable zk
       sudo systemctl status zk
