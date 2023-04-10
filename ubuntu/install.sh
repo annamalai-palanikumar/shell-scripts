@@ -28,6 +28,11 @@ do
       curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
       echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
       sudo apt-get -y install jenkins
+      read -p "Enter Jenkins Domain: " domain
+      wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/jenkins.example.com
+      sed -i 's/jenkins.example.com/$domain/g' jenkins.example.com
+      sudo mv jenkins.example.com /etc/nginx/sites-available/${domain}
+      sudo ln -sf /etc/nginx/sites-available/${domain} /etc/nginx/sites-enabled/
       ;;
     nginx)
       sudo apt-get -y install certbot python3-certbot-nginx
