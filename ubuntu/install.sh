@@ -50,7 +50,8 @@ do
       ;;
     zk)
       sudo useradd zk -m
-      sudo usermod --shell /bin/bash zk
+      id -u zk &>/dev/null || sudo useradd -m zk
+      sudo usermod -s /bin/false zk
       sudo mkdir -p /data/zookeeper
       sudo chown zk:zk /data/zookeeper
       cd /opt
