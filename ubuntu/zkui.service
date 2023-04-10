@@ -1,0 +1,18 @@
+[Unit]
+Description=Zookeeper UI Daemon
+Requires=network.target
+After=network.target
+
+[Service]    
+Type=forking
+WorkingDirectory=/opt/zookeeper
+User=zkui
+Group=zkui
+ExecStart=java -jar zkui.jar
+ExecStop=pkill -f 'zkui.jar'
+ExecReload=pkill -f 'zkui.jar' && java -jar zkui.jar
+TimeoutSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
