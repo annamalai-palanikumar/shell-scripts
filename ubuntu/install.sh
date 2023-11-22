@@ -10,6 +10,7 @@
 # Build Slave:
 # source <(curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/install.sh) jdk,git,maven
 
+sudo apt-get update
 pkgs=($(echo $1 | tr "," "\n"))
 for pkg in "${pkgs[@]}"
 do
