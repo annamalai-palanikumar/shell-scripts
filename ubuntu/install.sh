@@ -17,10 +17,10 @@ do
   echo -n "Installing $pkg ..."
   case $pkg in
     jre)
-      sudo apt-get -y install default-jre
+      sudo apt-get -y install openjdk-17-jre
       ;;
     jdk)
-      sudo apt-get -y install default-jdk
+      sudo apt-get -y install openjdk-17-jdk
       ;;
     mysql)
       sudo apt-get -y install mysql-server
