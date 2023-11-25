@@ -26,6 +26,7 @@ do
       sudo apt-get -y install mysql-server
       wget https://raw.githubusercontent.com/annamalai-palanikumar/shell-scripts/main/ubuntu/mysqld.cnf
       sudo mv mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+      sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 3306 -j ACCEPT && sudo netfilter-persistent save
       ;;
     jenkins)
       curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
